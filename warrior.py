@@ -1,4 +1,4 @@
-from Person import Person
+from person import Person
 
 
 class Warrior(Person):

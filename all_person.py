@@ -2,7 +2,7 @@ from random import choice, uniform
 
 from thing_type import ThingType
 from thing import Thing, generate_item
-from Person import Person
+from person import Person
 from paladin import Paladin
 from warrior import Warrior
 

@@ -2,7 +2,7 @@ from random import choice
 
 from thing_type import ThingType
 from thing import Thing, generate_item
-from Person import Person
+from person import Person
 from all_person import generate_person
 
 
