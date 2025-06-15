@@ -2,7 +2,7 @@ from gladiators.person import Person
 
 
 class Warrior(Person):
-    """Класс паладина."""
+    """Класс воин"""
 
     def __init__(self) -> None:
         super().__init__()

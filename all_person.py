@@ -1,6 +1,6 @@
 from random import choice
 
-from thing_type import ThingType
+from thing_type import ThingType, all_thing_type
 from thing import generate_item
 from gladiators.person import Person
 from gladiators.paladin import Paladin
@@ -27,7 +27,7 @@ def generate_person():
     added_thing_type = set()
     count = 0
     while True:
-        thing_type = choice(ThingType.all)
+        thing_type = choice(all_thing_type)
         if thing_type in added_thing_type:
             continue
         added_thing_type.add(thing_type)
