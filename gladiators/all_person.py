@@ -43,3 +43,24 @@ def generate_person(added_names: set[str]) -> Person:
 
     person.set_things(added_thing)
     return person
+
+
+def generate_10_person() -> list[Person]:
+    """
+    Сгенерировать 10 персонажей
+
+    Returns:
+        list: 10 персонажей
+    """
+    persons = []
+    print("Создание персонажей:")
+    added_names = set()
+    for __ in range(10):
+        person = generate_person(added_names)
+
+        added_names.add(person.name)
+        persons.append(person)
+        print("Создан персонаж:", person.get_full_name())
+        for thing in person.things:
+            print(f"--- {thing}")
+    return persons

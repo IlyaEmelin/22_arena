@@ -1,27 +1,15 @@
 from random import choice
 
 from gladiators.person import Person
-from gladiators.all_person import generate_person
+from gladiators.all_person import generate_person, generate_10_person
 
 
 def main():
     """
     Класс игры
     """
-    persons = []
-    print("Создание персонажей:")
-    added_names = set()
-    for __ in range(10):
-        person = generate_person(added_names)
-
-        added_names.add(person.name)
-        persons.append(person)
-        print("Создан персонаж:", person.get_full_name())
-        for thing in person.things:
-            print(f"--- {thing}")
-
+    persons = generate_10_person()
     print("--- Да начнется битва!!! ---")
-
     while len(persons) >= 2:
         defender_index = choice(range(len(persons)))
         defender = persons[defender_index]
