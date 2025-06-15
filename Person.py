@@ -20,6 +20,18 @@ class Person:
 
     def take_damage(self, attack: int):
         """Метод вычитания жизни на основе входной атаки."""
+        total_defense = self.base_defense
+
+        for thing in self.things:
+            total_defense += thing.percent_protection
+
+        if total_defense > 1:
+            raise Exception('total_defense > 1')
+        damage = attack * (1 - total_defense)
+        self.health -= int(damage)
+
+        print(f'''{self.name} получил {int(damage)} урона.
+            Осталось HP: {self.health}''')
 
     def calculate_total_attack(self):
         """Расчет итоговой атаки с учетом вещей"""
