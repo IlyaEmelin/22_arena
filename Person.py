@@ -8,6 +8,7 @@ class Person:
             base_attack: int,
             base_defense: float,
     ) -> None:
+        """Базовый класс персонажа."""
         self.name = name
         self.health = health
         self.base_attack = base_attack
@@ -17,6 +18,9 @@ class Person:
     def set_things(self, things: list):
         """Метод, принимающий на вход список вещей."""
         self.things = things
+
+        for thing in self.things:
+            self.health += thing.life
 
     def take_damage(self, attack: int):
         """Метод вычитания жизни на основе входной атаки."""
@@ -33,14 +37,14 @@ class Person:
         print(f'''{self.name} получил {int(damage)} урона.
             Осталось HP: {self.health}''')
 
-    def calculate_total_attack(self):
-        """Расчет итоговой атаки с учетом вещей"""
+        return self.health > 0
 
-    def calculate_total_defense(self):
-        """Расчет итоговой защиты с учетом вещей"""
-
-    def is_alive(self):
-        """Проверка, жив ли персонаж"""
+    def calculate_attack(self) -> int:
+        """Общая атака с учетом вещей."""
+        total_attack = self.base_attack
+        for thing in self.things:
+            total_attack += thing.attack
+        return total_attack
 
     def __str__(self) -> str:
         """Строковое представление персонажа"""
