@@ -2,6 +2,7 @@ from random import choice
 
 from thing_type import ThingType
 from thing import Thing, generate_item
+from Person import generate_person
 
 # This is a sample Python script.
 
@@ -15,6 +16,9 @@ def main():
     print("thing_type:", thing_type)
     thing = generate_item(thing_type)
     print("thing:", thing)
+
+    person = generate_person()
+    print("person:", person)
 
 
 # Press the green button in the gutter to run the script.
