@@ -11,14 +11,13 @@ def main():
     persons = generate_10_person()
     print("--- Да начнется битва!!! ---")
     while len(persons) >= 2:
-        defender_index = choice(range(len(persons)))
-        defender = persons[defender_index]
+        defender = choice(persons)
         attaker = get_attaker(defender, persons)
 
         attack = attaker.calculate_attack()
         life, damage = defender.take_damage(attack)
         if not life:
-            persons.pop(defender_index)
+            persons.remove(defender)
             print(
                 f"{attaker} убил {defender}, "
                 f"нанеся урон в размере {damage:.0f}"
