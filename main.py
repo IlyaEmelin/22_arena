@@ -1,36 +1,44 @@
 from random import choice
 
-from thing_type import ThingType
-from thing import Thing, generate_item
-from Person import Person
-from all_person import generate_person
+from gladiators.person import Person
+from gladiators.all_person import generate_person, generate_10_person
 
 
 def main():
-    persons = []
-    print("Создание персонажей:")
-    for __ in range(10):
-        person = generate_person()
-        print("Создан персонаж:", person)
-        persons.append(person)
-
+    """
+    Класс игры
+    """
+    persons = generate_10_person()
+    print("--- Да начнется битва!!! ---")
     while len(persons) >= 2:
-
-        defender_index = choice(range(len(persons)))
-        defender = persons[defender_index]
+        defender = choice(persons)
         attaker = get_attaker(defender, persons)
 
         attack = attaker.calculate_attack()
-        if not defender.take_damage(attack):
-            persons.pop(defender_index)
-
-        print(
-            f"Пользователь {attaker} нанес урон {defender}, в размере {defender.damage:.0f}")
+        life, damage = defender.take_damage(attack)
+        if not life:
+            persons.remove(defender)
+            print(
+                f"{attaker} убил {defender}, "
+                f"нанеся урон в размере {damage:.0f}"
+            )
+        else:
+            print(f"{attaker} нанес урон {defender}, в размере {damage:.0f}")
 
     print("Победитель:", persons[0])
 
 
-def get_attaker(defender: Person, persons):
+def get_attaker(defender: Person, persons) -> Person:
+    """
+    Получить атакующего персонажа
+
+    Args:
+        defender: защищающийся персонаж
+        persons: все персонажи
+
+    Returns:
+        Person: атакующий персонаж
+    """
     while True:
         attaker = choice(persons)
         if defender != attaker:
