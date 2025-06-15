@@ -2,11 +2,11 @@ from random import choice
 
 from thing_type import ThingType
 from thing import Thing, generate_item
-from Person import generate_person
+from Person import Person
+from all_person import generate_person
 
 
 def main():
-
     persons = []
     print("Создание персонажей:")
     for __ in range(10):
@@ -30,7 +30,7 @@ def main():
     print("Победитель:", persons[0])
 
 
-def get_attaker(defender, persons):
+def get_attaker(defender: Person, persons):
     while True:
         attaker = choice(persons)
         if defender != attaker:
