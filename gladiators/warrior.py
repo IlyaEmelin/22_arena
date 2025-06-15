@@ -1,13 +1,12 @@
-from person import Person
+from gladiators.person import Person
 
 
-class Paladin(Person):
+class Warrior(Person):
     """Класс паладина."""
 
     def __init__(self) -> None:
         super().__init__()
-        self.base_defense = self.base_defense * 2
-        self.health = self.health * 2
+        self.base_attack = self.base_attack * 2
 
         def __str__(self) -> str:
             """Строковое представление."""

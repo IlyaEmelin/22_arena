@@ -1,8 +1,6 @@
 from random import choice
 
-from thing_type import ThingType
-from thing import Thing, generate_item
-from person import Person
+from gladiators.person import Person
 from all_person import generate_person
 
 

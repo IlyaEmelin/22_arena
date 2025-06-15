@@ -1,10 +1,10 @@
-from random import choice, uniform
+from random import choice
 
 from thing_type import ThingType
-from thing import Thing, generate_item
-from person import Person
-from paladin import Paladin
-from warrior import Warrior
+from thing import generate_item
+from gladiators.person import Person
+from gladiators.paladin import Paladin
+from gladiators.warrior import Warrior
 
 _all_person = (Person, Paladin, Warrior)
 

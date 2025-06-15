@@ -1,8 +1,5 @@
 from random import choice, uniform
 
-from thing_type import ThingType
-from thing import Thing, generate_item
-
 _names = (
     "Алариэль",
     "Селестинара",
