@@ -1,22 +1,12 @@
-from person import Person
+from Person import Person
 
 
 class Warrior(Person):
     """Класс паладина."""
 
-    def __init__(
-            self,
-            name: str,
-            health: int,
-            base_attack: int,
-            base_defense: float,
-    ) -> None:
-        super().__init__(
-            name=name,
-            health=health,
-            base_attack=base_attack * 2,
-            base_defense=base_defense,
-        )
+    def __init__(self) -> None:
+        super().__init__()
+        self.base_attack = self.base_attack * 2
 
         def __str__(self) -> str:
             """Строковое представление."""

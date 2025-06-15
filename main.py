@@ -2,7 +2,8 @@ from random import choice
 
 from thing_type import ThingType
 from thing import Thing, generate_item
-from Person import generate_person
+from Person import Person
+from all_person import generate_person
 
 # This is a sample Python script.
 
@@ -11,15 +12,6 @@ from Person import generate_person
 
 
 def main():
-    # # Use a breakpoint in the code line below to debug your script.
-    # thing_type = choice(ThingType.all)
-    # print("thing_type:", thing_type)
-    # thing = generate_item(thing_type)
-    # print("thing:", thing)
-    #
-    # person = generate_person()
-    # print("person:", person)
-
     persons = []
     print("Создание персонажей:")
     for __ in range(10):
@@ -42,7 +34,7 @@ def main():
     print("Победитель:", persons[0])
 
 
-def get_attaker(defender, persons):
+def get_attaker(defender: Person, persons):
     while True:
         attaker = choice(persons)
         if defender != attaker:

@@ -3,22 +3,27 @@ from random import choice, uniform
 from thing_type import ThingType
 from thing import Thing, generate_item
 
+_names = (
+    "Алариэль",
+    "Селестинара",
+    "Элариондар",
+    "Лираэльна",
+    "Брандарсон",
+    "Ариаднара",
+    "Кэл’ариэль",
+    "Эльрианора",
+)
+
 
 class Person:
     """Класс персонажа"""
 
-    def __init__(
-        self,
-        name: str,
-        health: int,
-        base_attack: int,
-        base_defense: float,
-    ) -> None:
+    def __init__(self) -> None:
         """Базовый класс персонажа."""
-        self.name = name
-        self.health = health
-        self.base_attack = base_attack
-        self.base_defense = base_defense
+        self.name = choice(_names)
+        self.health = uniform(100, 1000)
+        self.base_attack = uniform(10, 50)
+        self.base_defense = uniform(0.01, 0.1)
         self.things = []
 
     def set_things(self, things: list):
@@ -57,41 +62,3 @@ class Person:
     def __str__(self) -> str:
         """Строковое представление персонажа"""
         return f"{self.name}: HP={self.health}"
-
-
-names = (
-    "Алариэль",
-    "Селестинара",
-    "Элариондар",
-    "Лираэльна",
-    "Брандарсон",
-    "Ариаднара",
-    "Кэл’ариэль",
-    "Эльрианора",
-)
-
-
-def generate_person():
-    person = Person(
-        choice(names),
-        uniform(100, 1000),
-        uniform(10, 50),
-        uniform(0.01, 0.1),
-    )
-
-    added_thing = list()
-    added_thing_type = set()
-    count = 0
-    while True:
-        thing_type = choice(ThingType.all)
-        if thing_type in added_thing_type:
-            continue
-        added_thing_type.add(thing_type)
-
-        thing = generate_item(thing_type)
-        added_thing.append(thing)
-        count += 1
-        if count > 4:
-            break
-    person.set_things(added_thing)
-    return person
