@@ -88,6 +88,12 @@ class Person:
         return total_attack
 
     def get_full_name(self) -> str:
+        """
+        Получить полное имя персонажа
+
+        Returns:
+            str: полное имя персонажа
+        """
         return (
             f"{self.get_name()} "
             f"атакой: {self.base_attack:.0f} "
@@ -95,6 +101,12 @@ class Person:
         )
 
     def get_name(self) -> str:
+        """
+        Получить имя персонажа
+
+        Returns:
+            str: имя персонажа
+        """
         return f"{self.name}: HP={max(self.health, 0.):.0f}"
 
     def __str__(self) -> str:

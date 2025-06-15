@@ -1,10 +1,13 @@
 from random import choice
 
 from gladiators.person import Person
-from all_person import generate_person
+from gladiators.all_person import generate_person
 
 
 def main():
+    """
+    Класс игры
+    """
     persons = []
     print("Создание персонажей:")
     added_names = set()
@@ -20,7 +23,6 @@ def main():
     print("--- Да начнется битва!!! ---")
 
     while len(persons) >= 2:
-
         defender_index = choice(range(len(persons)))
         defender = persons[defender_index]
         attaker = get_attaker(defender, persons)
@@ -39,7 +41,17 @@ def main():
     print("Победитель:", persons[0])
 
 
-def get_attaker(defender: Person, persons):
+def get_attaker(defender: Person, persons) -> Person:
+    """
+    Получить атакующего персонажа
+
+    Args:
+        defender: защищающийся персонаж
+        persons: все персонажи
+
+    Returns:
+        Person: атакующий персонаж
+    """
     while True:
         attaker = choice(persons)
         if defender != attaker:
