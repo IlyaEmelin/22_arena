@@ -75,8 +75,8 @@ def generate_person():
     person = Person(
         choice(names),
         uniform(100, 1000),
-        uniform(0.01, 0.1),
         uniform(10, 50),
+        uniform(0.01, 0.1),
     )
 
     added_thing = list()
