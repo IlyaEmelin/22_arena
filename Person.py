@@ -42,10 +42,10 @@ class Person:
 
         if total_defense > 1:
             raise Exception("total_defense > 1")
-        self.damage = attack * (1 - total_defense)
-        self.health -= self.damage
+        damage = attack * (1 - total_defense)
+        self.health -= damage
 
-        return self.health > 0
+        return self.health > 0, damage
 
     def calculate_attack(self) -> int:
         """Общая атака с учетом вещей."""
@@ -56,5 +56,4 @@ class Person:
 
     def __str__(self) -> str:
         """Строковое представление персонажа"""
-        return f"{self.name}: HP={self.health}"
-
+        return f"{self.name}: HP={self.health:.0f}"

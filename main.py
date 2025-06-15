@@ -21,11 +21,16 @@ def main():
         attaker = get_attaker(defender, persons)
 
         attack = attaker.calculate_attack()
-        if not defender.take_damage(attack):
+        life, damage = defender.take_damage(attack)
+        if not life:
             persons.pop(defender_index)
 
         print(
-            f"Пользователь {attaker} нанес урон {defender}, в размере {defender.damage:.0f}")
+            (
+                f"Пользователь {attaker} "
+                f"нанес урон {defender}, в размере {damage:.0f}"
+            )
+        )
 
     print("Победитель:", persons[0])
 
