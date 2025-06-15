@@ -19,23 +19,27 @@ def _get_class_person() -> Person:
     return choice(_all_person)
 
 
-def generate_person():
+def generate_person(added_names: set[str]) -> Person:
+    """
+    Создать персонажа
+
+    Args:
+        added_names: добавленные имена
+
+    Returns:
+        Person: Персонаж
+    """
     cls_person = _get_class_person()
-    person = cls_person()
+    person = cls_person(added_names)
 
-    added_thing = list()
-    added_thing_type = set()
-    count = 0
-    while True:
+    added_thing, added_thing_type = [], set()
+    for __ in range(4):
         thing_type = choice(all_thing_type)
-        if thing_type in added_thing_type:
-            continue
+        while thing_type in added_thing_type:
+            thing_type = choice(all_thing_type)
         added_thing_type.add(thing_type)
-
         thing = Thing(thing_type)
         added_thing.append(thing)
-        count += 1
-        if count > 4:
-            break
+
     person.set_things(added_thing)
     return person

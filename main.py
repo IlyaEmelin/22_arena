@@ -7,10 +7,17 @@ from all_person import generate_person
 def main():
     persons = []
     print("Создание персонажей:")
+    added_names = set()
     for __ in range(10):
-        person = generate_person()
-        print("Создан персонаж:", person)
+        person = generate_person(added_names)
+
+        added_names.add(person.name)
         persons.append(person)
+        print("Создан персонаж:", person.get_full_name())
+        for thing in person.things:
+            print(f"--- {thing}")
+
+    print("--- Да начнется битва!!! ---")
 
     while len(persons) >= 2:
 
@@ -22,13 +29,12 @@ def main():
         life, damage = defender.take_damage(attack)
         if not life:
             persons.pop(defender_index)
-
-        print(
-            (
-                f"Пользователь {attaker} "
-                f"нанес урон {defender}, в размере {damage:.0f}"
+            print(
+                f"{attaker} убил {defender}, "
+                f"нанеся урон в размере {damage:.0f}"
             )
-        )
+        else:
+            print(f"{attaker} нанес урон {defender}, в размере {damage:.0f}")
 
     print("Победитель:", persons[0])
 

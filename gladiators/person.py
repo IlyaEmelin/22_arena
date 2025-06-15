@@ -1,5 +1,7 @@
 from random import choice, uniform
 
+from thing import Thing
+
 _names = (
     "Алариэль",
     "Селестинара",
@@ -9,21 +11,55 @@ _names = (
     "Ариаднара",
     "Кэл’ариэль",
     "Эльрианора",
+    "Добрыня Никитич",
+    "Алёша Попович",
+    "Святогор",
+    "Микула Селянинович",
+    "Садко",
+    "Ставр Годинович",
+    "Халк (Брюс Бэннер)",
+    "Человек-паук (Питер Паркер)",
+    "Доктор Стрэндж (Стивен Стрэндж)",
+    "Соколиный глаз (Клинт Бартон)",
+    "Капитан Марвел (Кэрол Дэнверс)",
+    "Чёрная вдова (Наташа Романова)",
 )
 
 
 class Person:
     """Класс персонажа"""
 
-    def __init__(self) -> None:
+    def __init__(self, added_names: set[str]) -> None:
+        """
+        гладиатор.
+
+        Args:
+            added_names: добавленные имена
+        """
         """Базовый класс персонажа."""
-        self.name = choice(_names)
-        self.health = uniform(100, 1000)
+        self.name = self.__generate_name(added_names)
+        self.health = uniform(100, 400)
         self.base_attack = uniform(10, 50)
         self.base_defense = uniform(0.01, 0.1)
         self.things = []
 
-    def set_things(self, things: list):
+    @staticmethod
+    def __generate_name(added_names: set[str]) -> str:
+        """
+        Сгенерировать имя гладиатора
+
+        Args:
+            added_names: уже добавленные имена гладиаторов
+
+        Returns:
+            str: имя гладиатора
+        """
+        name = choice(_names)
+        while name in added_names:
+            name = choice(_names)
+        return name
+
+    def set_things(self, things: list[Thing]) -> None:
         """Метод, принимающий на вход список вещей."""
         self.things = things
 
@@ -51,6 +87,16 @@ class Person:
             total_attack += thing.attack
         return total_attack
 
+    def get_full_name(self) -> str:
+        return (
+            f"{self.get_name()} "
+            f"атакой: {self.base_attack:.0f} "
+            f"защитой {self.base_defense:.2f}"
+        )
+
+    def get_name(self) -> str:
+        return f"{self.name}: HP={max(self.health, 0.):.0f}"
+
     def __str__(self) -> str:
         """Строковое представление персонажа"""
-        return f"{self.name}: HP={self.health:.0f}"
+        return f"Гладиатор {self.get_name()}"

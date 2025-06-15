@@ -19,8 +19,8 @@ class Thing:
 
     def __str__(self):
         return (
-            f"{self.name} c защитой {self.percent_protection} "
-            f"и атакой {self.attack} "
-            f"и защитой {self.percent_protection}"
-            f"и жизнью {self.life}"
+            f"{self.name} "
+            f" и атакой {self.attack:.0f} "
+            f" и защитой {self.percent_protection:.2f}"
+            f" и жизнью {self.life:.0f}"
         )
