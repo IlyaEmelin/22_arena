@@ -21,18 +21,14 @@ class SubtypeThing(Enum):
 class ThingType(Enum):
     """Типы предметов"""
 
-    class SubtypeThing(Enum):
-        def __init__(
-            self,
-            thing_name,
-            all_full_names,
-        ):
-            self._thing_name = thing_name
-            self._all_full_names = all_full_names
+    def __init__(
+        self,
+        thing_name,
+        all_full_names,
+    ):
+        self.thing_name = thing_name
+        self.all_full_names = all_full_names
 
-    @property
-    def thing_name(self):
-        self.
     RING = (
         "Кольцо",
         ["Кольцо всевластья", "Золотое кольцо", "Серебренное кольцо"],

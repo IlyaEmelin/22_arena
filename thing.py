@@ -24,7 +24,7 @@ class Thing:
 
 def generate_item(thing_type: ThingType) -> "Thing":
     new_thing = Thing()
-    new_thing.name = choice(thing_type.thing_name)
+    new_thing.name = choice(thing_type.value[0])
     new_thing.percent_protection = uniform(0.01, 0.1)
     new_thing.attack = uniform(1, 10)
     new_thing.life = uniform(10, 100)
