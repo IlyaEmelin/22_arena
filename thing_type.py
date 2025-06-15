@@ -2,36 +2,44 @@ from enum import Enum, auto
 
 
 class SubtypeThing(Enum):
+    """
+    Подтип предметов защитные атакующие, увеличивающие количество жизней и др.
+    """
+
     def __init__(
         self,
         attack_multiplier,
         defense_multiplier,
         health_multiplier,
     ):
-        self.attack_multiplier = attack_multiplier
-        self.defense_multiplier = defense_multiplier
-        self.health_multiplier = health_multiplier
+        self.attack_multiplier: float = attack_multiplier
+        self.defense_multiplier: float = defense_multiplier
+        self.health_multiplier: float = health_multiplier
 
     DEFENDER = (0.0, 1.0, 0.0)
     ATTACKERS = (1.0, 0.0, 0.0)
     HEALERS = (0.0, 0.0, 1.0)
-    ULTIMATUMS = (0.5, 0.5, 0.5)
+    ULTIMATUMS = (0.7, 0.7, 0.7)
 
 
 class ThingType(Enum):
     """Типы предметов"""
 
     def __init__(
-        self,
-        thing_name,
-        all_full_names,
+        self, thing_name, all_full_names, subtype
     ):
-        self.thing_name = thing_name
-        self.all_full_names = all_full_names
+        self.thing_name: str = thing_name
+        self.all_full_names: list[str] = all_full_names
+        self.subtype: SubtypeThing = subtype
 
     RING = (
         "Кольцо",
-        ["Кольцо всевластья", "Золотое кольцо", "Серебренное кольцо"],
+        [
+            "Кольцо всевластья",
+            "Золотое кольцо",
+            "Серебренное кольцо",
+        ],
+        SubtypeThing.ULTIMATUMS,
     )
     PANTS = (
         "Штаны",
@@ -41,6 +49,7 @@ class ThingType(Enum):
             "Железные штаны",
             "Пояс верности",
         ),
+        SubtypeThing.DEFENDER,
     )
     JACKET = (
         "Куртка",
@@ -50,6 +59,7 @@ class ThingType(Enum):
             "Железная куртка",
             "Золотая кираса",
         ),
+        SubtypeThing.DEFENDER,
     )
     HAT = (
         "Шапка",
@@ -60,6 +70,7 @@ class ThingType(Enum):
             "Хлопковая шапка",
             "Железная шапка",
         ),
+        SubtypeThing.DEFENDER,
     )
     SHOES = (
         "Обувь",
@@ -69,6 +80,7 @@ class ThingType(Enum):
             "Кожаные ботинки",
             "Железные ботинки",
         ),
+        SubtypeThing.DEFENDER,
     )
     GLOVES = (
         "Перчатки",
@@ -78,6 +90,7 @@ class ThingType(Enum):
             "Железные перчатки",
             "Титановые варежки",
         ),
+        SubtypeThing.DEFENDER,
     )
     WEAPON = (
         "Оружие",
@@ -88,6 +101,7 @@ class ThingType(Enum):
             "Каменный меч",
             "Железное копье",
         ),
+        SubtypeThing.ATTACKERS,
     )
 
 

@@ -1,7 +1,7 @@
 from random import choice
 
 from thing_type import ThingType, all_thing_type
-from thing import generate_item
+from thing import Thing
 from gladiators.person import Person
 from gladiators.paladin import Paladin
 from gladiators.warrior import Warrior
@@ -32,7 +32,7 @@ def generate_person():
             continue
         added_thing_type.add(thing_type)
 
-        thing = generate_item(thing_type)
+        thing = Thing(thing_type)
         added_thing.append(thing)
         count += 1
         if count > 4:
